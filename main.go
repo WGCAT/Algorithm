@@ -1,3 +1,5 @@
+// A ~ Z : 65 ~ 90, a ~ z : 97 ~ 122
+
 package main
 
 import (
@@ -6,12 +8,23 @@ import (
 )
 
 func main() {
-	var word []string
-	var s1, s2 string
-	fmt.Scan(&s1, &s2)
+	var s1 string
+	fmt.Scan(&s1)
 
-	word = append(word, s1)
-	word = append(word, s2)
+	var result string
 
-	fmt.Println(strings.Join(word, ""))
+	slice := strings.Split(s1, "")
+
+	for _, v := range slice {
+		if v >= "A" && v <= "Z" {
+			word := string(v)
+			word = strings.ToUpper(word)
+			result = result + word
+		} else {
+			word := string(v)
+			word = strings.ToLower(word)
+			result = result + word
+		}
+	}
+	fmt.Println(result)
 }
