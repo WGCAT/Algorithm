@@ -1,9 +1,7 @@
 func solution(n int) int {
-    result := 1
-    for{
-        if (6*result) % n == 0{
-            return result
-        }
-        result++
-    } 
+    r := 1
+    for (6*r) % n != 0 {
+        r++
+    }
+    return r
 }
