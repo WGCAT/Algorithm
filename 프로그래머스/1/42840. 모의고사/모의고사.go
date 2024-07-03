@@ -16,29 +16,15 @@ func solution(answers []int) []int {
 			scores[2]++
 		}
 	}
-	if scores[0] > scores[1] {
-		if scores[0] > scores[2] {
-			result = append(result, 1)
-		} else if scores[0] < scores[2] {
-			result = append(result, 3)
-		} else if scores[0] == scores[2] {
-			result = append(result, 1, 3)
+	max := 0
+	for _, score := range scores {
+		if score > max {
+			max = score
 		}
-	} else if scores[0] < scores[1] {
-		if scores[1] > scores[2] {
-			result = append(result, 2)
-		} else if scores[1] < scores[2] {
-			result = append(result, 3)
-		} else if scores[1] == scores[2] {
-			result = append(result, 2, 3)
-		}
-	} else if scores[0] == scores[1] {
-		if scores[0] > scores[2] {
-			result = append(result, 1, 2)
-		} else if scores[0] < scores[2] {
-			result = append(result, 2)
-		} else if scores[0] == scores[2] {
-			result = append(result, 1, 2, 3)
+	}
+	for i := 0; i < len(scores); i++ {
+		if scores[i] == max {
+			result = append(result, i+1)
 		}
 	}
 	return result
