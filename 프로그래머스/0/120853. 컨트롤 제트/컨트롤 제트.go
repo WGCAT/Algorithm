@@ -7,10 +7,10 @@ func solution(s string) int {
 	slice := strings.Split(s, " ")
 	for i := 0; i < len(slice); i++ {
 		if slice[i] != "Z" {
-			numPlus, _ := strconv.ParseInt(slice[i], 10, 0)
+			numPlus, _ := strconv.Atoi(slice[i])
 			result = result + int(numPlus)
 		} else {
-			numMinus, _ := strconv.ParseInt(slice[i-1], 10, 0)
+			numMinus, _ := strconv.Atoi(slice[i-1])
 			result = result - int(numMinus)
 		}
 	}
