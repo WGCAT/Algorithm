@@ -1,6 +1,9 @@
-import(
-    "strconv"
+package main
+
+import (
+	"strconv"
 )
+
 func solution(bin1 string, bin2 string) string {
 	var slice []string
 	var sum int
