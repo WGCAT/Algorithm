@@ -1,6 +1,3 @@
-import (
-	"strings"
-)
 func solution(survey []string, choices []int) string {
 	category := [][]string{{"R", "T"}, {"C", "F"}, {"J", "M"}, {"A", "N"}}
 	m := make(map[string]int)
@@ -15,22 +12,23 @@ func solution(survey []string, choices []int) string {
 	}
 
 	for i := 0; i < len(choices); i++ {
-		one := strings.Split(survey[i], "")
 		if score[i] > 0 {
-			m[one[0]] = m[one[0]] + score[i]
+			str0 := string((survey[i])[0])
+			m[str0] = m[str0] + score[i]
 		} else if score[i] < 0 {
-			m[one[1]] = m[one[1]] + (score[i] * (-1))
+			str1 := string((survey[i])[1])
+			m[str1] = m[str1] + (score[i] * (-1))
 		}
 	}
 
-	var result []string
+	var result string
 	for _, v := range category {
 		if m[v[0]] < m[v[1]] {
-			result = append(result, v[1])
+			result = result + v[1]
 		} else {
-			result = append(result, v[0])
+			result = result + v[0]
 		}
 	}
 
-	return strings.Join(result, "")
+	return result
 }
