@@ -1,11 +1,11 @@
 func solution(survey []string, choices []int) string {
 	category := [][]string{{"R", "T"}, {"C", "F"}, {"J", "M"}, {"A", "N"}}
 	m := make(map[string]int)
-	for _, v := range category {
-		for _, vv := range v {
-			m[vv] = 0
-		}
-	}
+	// for _, v := range category {
+	// 	for _, vv := range v {
+	// 		m[vv] = 0
+	// 	}
+	// }
 	score := make([]int, len(choices))
 	for i := 0; i < len(choices); i++ {
 		score[i] = 4 - choices[i]
