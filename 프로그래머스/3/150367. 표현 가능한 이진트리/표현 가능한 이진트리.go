@@ -34,11 +34,11 @@ func solution(numbers []int64) []int {
 
 func tree(number string) int {
 	result := 0
-	// if len(number) == 1 || !strings.Contains(number, "0") || !strings.Contains(number, "1") {
+	// if !strings.Contains(number, "0") || !strings.Contains(number, "1") {
 	// 	result = 1
 	// 	return result
 	// }
-	if len(number) == 1 || containBinary(number) {
+	if containBinary(number) {
 		result = 1
 		return result
 	}
