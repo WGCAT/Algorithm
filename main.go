@@ -5,38 +5,52 @@ import (
 )
 
 func main() {
-	a := []int{1, 2, 1, 3, 1, 4, 1, 2}
-	r := solution(a)
+	w := []string{"SOOOL", "XXXXO", "OOOOO", "OXXXX", "OOOOE"}
+	r := solution(w)
 	fmt.Println(r)
+}
+func solution(maps []string) int {
+	dx := []int{1, -1, 0, 0}
+	dy := []int{0, 0, -1, 1}
+	var startX, startY int
+	var leverLen, leverX, leverY int
+	var endLen, endX, endY int
 
+	for i := 0; i < len(maps); i++ {
+		for j := 0; j < len(maps[0]); j++ {
+			if maps[i][j] == 'S' {
+				startX = i
+				startY = j
+			} else if maps[i][j] == 'L' {
+				leverX = i
+				leverY = j
+			} else if maps[i][j] == 'E' {
+				endX = i
+				endY = j
+			}
+		}
+	}
+
+
+	arr := findPoint(mapSlice, 1)
+	x := arr[1]
+	y := arr[0]
+	var check [][]bool{}
+
+	return 0
 }
 
-func solution(topping []int) int {
-	cs := make([]int, len(topping))
-	bro := make([]int, len(topping))
-	csCount := 0
-	broCount := 0
-	result := 0
-	for _, v := range topping {
-		if cs[v] == 0 {
-			csCount++
+func bfs(maps []string, startX int, startY int, endX int, endY int) {
+	visited := make([][]bool, len(maps), len(maps[0]))
+	for i:=0; i<len(visited); i++ {
+		for j:=0; j<len(visited[i]); j++ {
+			visited[i][j] = false
 		}
-		cs[v]++
 	}
-	for _, v := range topping {
-		if bro[v] == 0 {
-			broCount++
-		}
-		bro[v]++
-		cs[v]--
-		if cs[v] == 0 {
-			csCount--
-		}
-		if csCount == broCount {
-			result++
-		}
+	var queue [][]int
+	var startPoint []int{startX, startY, 0}
+	queue = append(queue, startPoint)
 
-	}
 
-	return result
+
 }

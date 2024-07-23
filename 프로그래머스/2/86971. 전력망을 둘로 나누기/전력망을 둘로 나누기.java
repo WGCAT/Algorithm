@@ -3,15 +3,16 @@ class Solution {
     static int[][] arr;
     public int solution(int n, int[][] wires) {
         int answer = n;
-        arr= new int[n+1][n+1];
+        arr = new int[n+1][n+1];
         int[] result = new int[n];
-        
+        // 인접 행렬 생성
         for(int i=0; i<wires.length; i++){
             int x = wires[i][0];
             int y = wires[i][1];
             arr[x][y] = 1;
             arr[y][x] = 1;
         }
+        // 연결을 하나 끊고 bfs함수 호출 후 다시 연결
         for(int i=0; i<wires.length; i++){
             int x = wires[i][0];
             int y = wires[i][1];
@@ -23,7 +24,8 @@ class Solution {
             arr[x][y] = 1;
             arr[y][x] = 1;
         }
-        System.out.println(Arrays.toString(result));
+
+        // count값들의 최소값
         for (int i=0; i<result.length; i++) {
             int cal = n-2*result[i];
             if (cal < 0) {
@@ -32,11 +34,10 @@ class Solution {
             if (cal < answer) {
                 answer = cal;
             }    
-            System.out.println(answer);
         }
         return answer;
     }
-    
+    // 너비 탐색
     public int bfs(int n, int start) {
         int[] visited= new int[n+1];
         int count=1;
