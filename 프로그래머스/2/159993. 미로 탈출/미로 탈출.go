@@ -43,12 +43,6 @@ func bfs(startX int, startY int, endX int, endY int, maps []string, depth int, w
 	start := []int{startX, startY, 0}
 	queue = append(queue, start)
 
-	for i := 0; i < depth; i++ {
-		for j := 0; j < width; j++ {
-			visited[i] = append(visited[i], false)
-		}
-	}
-
 	for len(queue) != 0 {
 		x := queue[0][0]
 		y := queue[0][1]
